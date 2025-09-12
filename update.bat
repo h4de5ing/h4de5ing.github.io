@@ -1,0 +1,1 @@
+ls ./md/*.md | xargs -I {} sh -c 'echo "$(head -n 1 "{}")#{}"' > ./list.txt
