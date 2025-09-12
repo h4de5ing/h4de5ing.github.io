@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>h4de5ing & 0zark.eth - 技术个人主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #64FFDA;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: #CCD6F6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #64FFDA;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: #8892B0;
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .carousel-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #64FFDA;
+        }
+        
+        .carousel-item p {
+            color: #CCD6F6;
+            margin-bottom: 20px;
+        }
+        
+        .carousel-item .tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .carousel-item .tag {
+            background: rgba(100, 255, 218, 0.1);
+            color: #64FFDA;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            margin: 0 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .indicator.active {
+            background: #64FFDA;
+            transform: scale(1.2);
+        }
+        
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(100, 255, 218, 0.1);
+            color: #64FFDA;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 20px;
+        }
+        
+        .carousel-control:hover {
+            background: rgba(100, 255, 218, 0.2);
+        }
+        
+        .carousel-control.prev {
+            left: 20px;
+        }
+        
+        .carousel-control.next {
+            right: 20px;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            text-align: center;
+            margin: 60px 0 40px;
+            color: #64FFDA;
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-card i {
+            font-size: 40px;
+            color: #64FFDA;
+            margin-bottom: 15px;
+        }
+        
+        .skill-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .web3-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .web3-section h2 {
+            color: #64FFDA;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .web3-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .web3-item {
+            background: rgba(100, 255, 218, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .web3-item:hover {
+            transform: translateY(-5px);
+            background: rgba(100, 255, 218, 0.15);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            margin: 0 10px;
+            transition: background 0.3s;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .social-links a:hover {
+            background: #64FFDA;
+            color: #0f2027;
+        }
+        
+        .eth-address {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: rgba(100, 255, 218, 0.1);
+            border-radius: 30px;
+            display: inline-block;
+            color: #64FFDA;
+            font-family: monospace;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .carousel-control {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .web3-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">h4de5ing & 0zark.eth</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#skills">技能</a></li>
+                    <li><a href="#projects">项目</a></li>
+                    <li><a href="#web3">Web3.0</a></li>
+                    <li><a href="#contact">联系</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <section class="hero">
+            <h1>Hi, 我是 <span style="color: #64FFDA;">h4de5ing & 0zark.eth</span></h1>
+            <p>Compose跨平台开发者 | Web3.0技术研究者 | 量化交易策略研究员</p>
+        </section>
+        
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-item">
+                    <h3>价值投资+均值回归策略量化交易</h3>
+                    <p>基于价值投资理念和均值回归理论开发的量化工具，实现可人工干预的半自动化交易决策和风险管理。</p>
+                    <div class="tags">
+                        <span class="tag">Kotlin data</span>
+                        <span class="tag">均值回归</span>
+                        <span class="tag">价值投资</span>
+                        <span class="tag">算法量化</span>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <h3>AOSP定制与框架开发</h3>
+                    <p>定制Android系统框架层，System应用开发，为特定设备提供定制ROM解决方案。</p>
+                    <div class="tags">
+                        <span class="tag">Android</span>
+						<span class="tag">System</span>
+                        <span class="tag">AOSP</span>
+                        <span class="tag">Framework</span>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <h3>Compose Multiplatform应用开发</h3>
+                    <p>开发跨平台应用程序，注重用户体验和性能优化，遵循Material Design设计原则。</p>
+                    <div class="tags">
+                        <span class="tag">Kotlin</span>
+                        <span class="tag">Kotlin Multiplatform</span>
+                        <span class="tag">Compose Multiplatform</span>
+                        <span class="tag">Material Design</span>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <h3>HTTPS抓包与逆向分析</h3>
+                    <p>使用各种工具和技术进行移动应用网络分析，解密HTTPS流量，进行安全评估和漏洞挖掘。</p>
+                    <div class="tags">
+                        <span class="tag">HTTPS</span>
+                        <span class="tag">抓包</span>
+                        <span class="tag">逆向工程</span>
+                        <span class="tag">安全分析</span>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <h3>Web3.0与区块链开发</h3>
+                    <p>基于web3j开发区块链应用，参与DeFi项目，研究智能合约安全，空投策略和MEME币投资分析。</p>
+                    <div class="tags">
+                        <span class="tag">Web3</span>
+                        <span class="tag">web3j</span>
+                        <span class="tag">DeFi</span>
+                        <span class="tag">智能合约</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-control prev">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="carousel-control next">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="carousel-indicators">
+            <div class="indicator active"></div>
+            <div class="indicator"></div>
+            <div class="indicator"></div>
+            <div class="indicator"></div>
+            <div class="indicator"></div>
+        </div>
+        
+        <h2 class="section-title">技术专长</h2>
+        
+        <div class="skills">
+            <div class="skill-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>量化交易</h3>
+                <p>价值投资策略<br>均值回归模型<br>算法交易系统</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Compose开发</h3>
+                <p>Compose Multiplatform<br>声明式UI开发<br>Kotlin跨平台</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>安全分析</h3>
+                <p>HTTPS抓包<br>逆向工程<br>漏洞挖掘</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-coins"></i>
+                <h3>Web3.0</h3>
+                <p>web3j<br>DeFi<br>Bot</p>
+            </div>
+        </div>
+        
+        <div id="web3" class="web3-section">
+            <h2>Web3.0 领域专长</h2>
+            <p style="text-align: center; color: #CCD6F6; max-width: 800px; margin: 0 auto;">
+                专注于区块链技术和去中心化应用，在以下领域有深入研究与实践经验
+            </p>
+            <div class="web3-grid">
+                <div class="web3-item">空投策略</div>
+                <div class="web3-item">MEME币分析</div>
+                <div class="web3-item">DeFi协议</div>
+                <div class="web3-item">BTC/ETH/DOGE/Solana钱包</div>
+            </div>
+        </div>
+        
+        <footer id="contact">
+            <div class="social-links">
+                <a href="https://github.com/h4de5ing" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://x.com/0zark88" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://etherscan.io/" title="Ethereum Address">
+                    <i class="fab fa-ethereum"></i>
+                </a>
+            </div>
+            <p style="margin-top: 20px;">© 2025 h4de5ing & 0zark.eth. 保留所有权利</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const items = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.querySelector('.carousel-control.prev');
+            const nextBtn = document.querySelector('.carousel-control.next');
+            
+            let currentIndex = 0;
+            const itemCount = items.length;
+            
+            // 更新轮播图和指示器状态
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // 更新指示器
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            // 下一张
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % itemCount;
+                updateCarousel();
+            }
+            
+            // 上一张
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + itemCount) % itemCount;
+                updateCarousel();
+            }
+            
+            // 点击指示器切换
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+            
+            // 添加按钮事件监听
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // 自动轮播
+            let autoPlay = setInterval(nextSlide, 5000);
+            
+            // 鼠标悬停时暂停轮播
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoPlay);
+            });
+            
+            // 鼠标离开时恢复轮播
+            carouselContainer.addEventListener('mouseleave', () => {
+                autoPlay = setInterval(nextSlide, 5000);
+            });
+        });
+    </script>
+</body>
+</html>
